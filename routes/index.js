@@ -7,6 +7,6 @@ router.get('/', (req, res) => {
     res.send('Hello World Project 2');
 });
 
-// router.use('/users', require('./users'));
+router.use('/celestial', require('./celestialBodies'));
 
 module.exports = router;
