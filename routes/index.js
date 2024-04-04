@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-// router.use('/', require('./swagger'));
+router.use('/', require('./swagger'));
 
 router.get('/', (req, res) => {
     //#swagger.tags=['Hello World]
@@ -8,5 +8,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/celestial', require('./celestialBodies'));
+router.use('/near-earth', require('./nearEarth'));
 
 module.exports = router;

@@ -2,6 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
+    //#swagger.tags=['Celestial Bodies']
     const result = await mongodb.getDatabase().db().collection('celestial_bodies').find();
     result.toArray().then((celestial_bodies) => {
         res.setHeader('Content-Type', 'application/json');
@@ -46,7 +47,7 @@ const updateCelestialBody = async (req, res) => {
         name_origin: req.body.name_origin,
         influence: req.body.influence
     };
-    const response = await mongodb.getDatabase().db().collection('celestial_bodies').find({_id: celestialBodyId}, celestialBody);
+    const response = await mongodb.getDatabase().db().collection('celestial_bodies').replaceOne({_id: celestialBodyId}, celestialBody);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {

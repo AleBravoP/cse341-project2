@@ -8,7 +8,9 @@ router.get('/:id', celestialBodiesController.getSingle);
 router.post('/', celestialBodiesController.createCelestialBody);
 
 // Create a PUT route to update a celestial body
-router.put('/:id', celestialBodiesController.updateCelestialBody);
+router.put('/:id', async (req, res) => {
+    await celestialBodiesController.updateCelestialBody (req, res);
+});
 
 // Create a DELETE route to delete a celestial body
 router.delete('/:id', celestialBodiesController.deleteCelestialBody);
